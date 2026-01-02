@@ -1,0 +1,27 @@
+@use 'shapes';
+
+@font-face {
+  font-family: "MS Sans";
+  src: url("/static/font/ms-sans.woff2");
+}
+
+@font-face {
+  font-family: "MS Sans Bold";
+  src: url("/static/font/ms-sans-bold.woff2");
+}
+
+* {
+  font-family: "MS Sans", monospace;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: -1px;
+}
+
+b, strong {
+  font-family: "MS Sans Bold", monospace;
+}
+
+div {
+  @extend %outward;
+  margin: 32px;
+}
