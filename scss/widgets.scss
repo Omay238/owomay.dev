@@ -1,3 +1,4 @@
+@use 'palette';
 @use 'shapes';
 
 @font-face {
@@ -10,18 +11,97 @@
   src: url("/static/font/ms-sans-bold.woff2");
 }
 
+@font-face {
+  font-family: "Bullet";
+  src: url("/static/font/bullet.woff2");
+}
+
 * {
   font-family: "MS Sans", monospace;
   font-size: 14px;
   line-height: 14px;
-  letter-spacing: -1px;
+  border: none;
+  outline: none;
+  user-select: none;
 }
 
 b, strong {
   font-family: "MS Sans Bold", monospace;
+  letter-spacing: -1px;
 }
 
-div {
+input {
+  @extend %inward;
+}
+
+input[type=checkbox] {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+input[type=checkbox]:checked {
+  background: url("/static/img/check.png");
+  image-rendering: pixelated;
+}
+
+input[type=color] {
+  height: 18px;
+  width: 24px;
+}
+
+input[type=radio] {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+input[type=radio]:checked {
+  background: url("/static/img/dot.png");
+  image-rendering: pixelated;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 0;
+  background: palette.$palette-dark_gray;
+}
+
+input[type=range]::-webkit-slider-thumb, input[type=range]::-moz-range-thumb {
+  appearance: none;
+  -webkit-appearance: none;
   @extend %outward;
-  margin: 32px;
+  border-radius: 0;
+  width: 2px;
+  height: 8px;
+  cursor: pointer;
+}
+
+input[type=password] {
+  font-family: "Bullet", monospace;
+  font-size: 8px;
+}
+
+input[type=file]::file-selector-button {
+  font-family: "MS Sans", monospace;
+  font-size: 14px;
+  line-height: 14px;
+  border: none;
+  outline: none;
+}
+
+button, input[type=button], input[type=reset], input[type=submit], input[type=file]::file-selector-button {
+  @extend %outward;
+  cursor: pointer;
+}
+
+button:active, input[type=button]:active, input[type=reset]:active, input[type=submit]:active, input[type=file]::file-selector-button:active {
+  @extend %inward;
+}
+
+textarea {
+  @extend %inward;
 }
